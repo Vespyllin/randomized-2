@@ -1,0 +1,146 @@
+Total time:
+h(i): 10ms
+g(i): 17ms
+m(i): 1ms
+
+Testing Chain Runtime
+Chain time for N = 6 : 0.0382866s
+Chain time for N = 7 : 0.048236s
+Chain time for N = 8 : 0.0750555s
+Chain time for N = 9 : 0.113334s
+Chain time for N = 10 : 0.194513s
+Chain time for N = 11 : 0.367545s
+Chain time for N = 12 : 0.767122s
+Chain time for N = 13 : 1.57392s
+Chain time for N = 14 : 3.35667s
+Chain time for N = 15 : 9.93674s
+Chain time for N = 16 : 15.3253s
+Chain time for N = 17 : 45.9083s
+Chain time for N = 18 : 113.32s
+Chain time for N = 19 : 318.697s
+Chain time for N = 20 : 334.285s
+Chain time for N = 21 : 308.733s
+Chain time for N = 22 : 331.37s
+Chain time for N = 23 : 330.629s
+Chain time for N = 24 : 343.847s
+Chain time for N = 25 : 330.379s
+Chain time for N = 26 : 339.89s
+Chain time for N = 27 : 338.794s
+Chain time for N = 28 : 337.626s
+
+Testing Sketch Runtime
+Sketch time for N = 6 R = 7 : 0.0353152s
+Sketch time for N = 7 R = 7 : 0.036893s
+Sketch time for N = 8 R = 7 : 0.0376025s
+Sketch time for N = 9 R = 7 : 0.0384194s
+Sketch time for N = 10 R = 7 : 0.037628s
+Sketch time for N = 11 R = 7 : 0.038049s
+Sketch time for N = 12 R = 7 : 0.038167s
+Sketch time for N = 13 R = 7 : 0.0377181s
+Sketch time for N = 14 R = 7 : 0.0376456s
+Sketch time for N = 15 R = 7 : 0.0377734s
+Sketch time for N = 16 R = 7 : 0.0373702s
+Sketch time for N = 17 R = 7 : 0.0388064s
+Sketch time for N = 18 R = 7 : 0.03829s
+Sketch time for N = 19 R = 7 : 0.0383445s
+Sketch time for N = 20 R = 7 : 0.0380143s
+Sketch time for N = 21 R = 7 : 0.0376251s
+Sketch time for N = 22 R = 7 : 0.0375142s
+Sketch time for N = 23 R = 7 : 0.0380373s
+Sketch time for N = 24 R = 7 : 0.038151s
+Sketch time for N = 25 R = 7 : 0.038326s
+Sketch time for N = 26 R = 7 : 0.0380123s
+Sketch time for N = 27 R = 7 : 0.0382602s
+Sketch time for N = 28 R = 7 : 0.0377001s
+
+Testing Sketch Runtime
+Sketch time for N = 6 R = 10 : 0.0372821s
+Sketch time for N = 7 R = 10 : 0.0375624s
+Sketch time for N = 8 R = 10 : 0.0384814s
+Sketch time for N = 9 R = 10 : 0.0385272s
+Sketch time for N = 10 R = 10 : 0.0384963s
+Sketch time for N = 11 R = 10 : 0.0384813s
+Sketch time for N = 12 R = 10 : 0.0415994s
+Sketch time for N = 13 R = 10 : 0.0386324s
+Sketch time for N = 14 R = 10 : 0.0384955s
+Sketch time for N = 15 R = 10 : 0.0400281s
+Sketch time for N = 16 R = 10 : 0.0385416s
+Sketch time for N = 17 R = 10 : 0.0385727s
+Sketch time for N = 18 R = 10 : 0.0385274s
+Sketch time for N = 19 R = 10 : 0.038438s
+Sketch time for N = 20 R = 10 : 0.0382859s
+Sketch time for N = 21 R = 10 : 0.0385592s
+Sketch time for N = 22 R = 10 : 0.0390478s
+Sketch time for N = 23 R = 10 : 0.0391631s
+Sketch time for N = 24 R = 10 : 0.038483s
+Sketch time for N = 25 R = 10 : 0.0384468s
+Sketch time for N = 26 R = 10 : 0.0384872s
+Sketch time for N = 27 R = 10 : 0.037975s
+Sketch time for N = 28 R = 10 : 0.038401s
+
+Testing Sketch Runtime
+Sketch time for N = 6 R = 20 : 0.0357162s
+Sketch time for N = 7 R = 20 : 0.0373237s
+Sketch time for N = 8 R = 20 : 0.0382764s
+Sketch time for N = 9 R = 20 : 0.039847s
+Sketch time for N = 10 R = 20 : 0.0402517s
+Sketch time for N = 11 R = 20 : 0.0402308s
+Sketch time for N = 12 R = 20 : 0.0406593s
+Sketch time for N = 13 R = 20 : 0.0414705s
+Sketch time for N = 14 R = 20 : 0.0464462s
+Sketch time for N = 15 R = 20 : 0.0697028s
+Sketch time for N = 16 R = 20 : 0.0712309s
+Sketch time for N = 17 R = 20 : 0.0726035s
+Sketch time for N = 18 R = 20 : 0.0723663s
+Sketch time for N = 19 R = 20 : 0.0761512s
+Sketch time for N = 20 R = 20 : 0.0733758s
+Sketch time for N = 21 R = 20 : 0.0736151s
+Sketch time for N = 22 R = 20 : 0.0759554s
+Sketch time for N = 23 R = 20 : 0.0730926s
+Sketch time for N = 24 R = 20 : 0.0764897s
+Sketch time for N = 25 R = 20 : 0.0738788s
+Sketch time for N = 26 R = 20 : 0.0727386s
+Sketch time for N = 27 R = 20 : 0.0731087s
+Sketch time for N = 28 R = 20 : 0.0804476s
+
+(GOOD HASH FUNCTIONS)
+Testing Avg. Sketch Error
+avg error @R = 3: 0.262969
+avg error @R = 4: 0.172718
+avg error @R = 5: 0.12287
+avg error @R = 6: 0.0974877
+avg error @R = 7: 0.0715087
+avg error @R = 8: 0.0539655
+avg error @R = 9: 0.0382833
+avg error @R = 10: 0.0231716
+
+Testing Max Sketch Error
+max error @R = 3: 1.77061
+max error @R = 4: 1.52803
+max error @R = 5: 0.935276
+max error @R = 6: 0.505755
+max error @R = 7: 0.388878
+max error @R = 8: 0.273336
+max error @R = 9: 0.212892
+max error @R = 10: 0.120926
+
+(BAD HASH FUNCTION)
+Testing Avg. Sketch Error
+avg error @R = 3: 7.69959
+avg error @R = 4: 12.2358
+avg error @R = 5: 9.39839
+avg error @R = 6: 3.64266
+avg error @R = 7: 6.81664
+avg error @R = 8: 3.18958
+avg error @R = 9: 6.96442
+avg error @R = 10: 1.44591
+
+Testing Max Sketch Error
+max error @R = 3: 554.834
+max error @R = 4: 554.834
+max error @R = 5: 554.834
+max error @R = 6: 554.834
+max error @R = 7: 554.834
+max error @R = 8: 554.834
+max error @R = 9: 554.834
+max error @R = 10: 554.834

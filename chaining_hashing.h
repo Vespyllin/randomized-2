@@ -22,31 +22,19 @@ private:
     // Coefficients for the polynomial hash function
     uint32_t a, b, c, d;
 
-    // Hash function k(x) = (a * x) % p
-    uint32_t k(uint32_t x) const;
+    uint32_t multiply_shift_uint32(uint32_t x, uint32_t l, uint32_t a) const;
 
 public:
     // Constructor accepts size n for the hash table and initializes random coefficients
     ChainingHashTable(size_t size);
 
     // Insert method updates or adds (key, delta) to the table
-    void insert(uint32_t key, int64_t delta);
+    void update(uint32_t key, int64_t delta);
 
     // Search for a key in the table
     bool search(uint32_t key) const;
 
-    // Get the largest list size
-    size_t getLargestListSize() const;
-
-    // Print all the key-value pairs in the table
-    void printTable() const;
-
-    // Record the largest list size after each insertion into a CSV file
-    void recordLargestListSizeData(const std::vector<uint32_t>& keys, const std::vector<int64_t>& deltas, const std::string& filename);
-
-    // Compute h(i) and g(i)
-    int32_t h(uint32_t i, size_t R) const;
-    int32_t g(uint32_t i) const;
+    uint64_t query();
 };
 
 #endif
