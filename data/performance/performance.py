@@ -18,7 +18,7 @@ df4['time_s'] = df4['time_s'] / 1000000000
 
 plt.figure(figsize=(10, 6))
 
-plt.plot(df1['N'], df1['time_s'], label='Chaining with Hashing (R=24)', marker='o')
+plt.plot(df1['N'], df1['time_s'], label='Chaining with Hashing (R=22)', marker='o')
 
 plt.plot(df2['N'], df2['time_s'], label='Sketch (R=7)', marker='s')
 plt.plot(df3['N'], df3['time_s'], label='Sketch (R=10)', marker='^')

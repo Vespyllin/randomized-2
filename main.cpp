@@ -55,7 +55,7 @@ void norm_benchmarks()
 {
     uint64_t iter = 1'000'000'000; // 10^9 updates
 
-    auto R = 18;
+    auto R = 22;
     std::cout << "Testing Chain Runtime R=" << R << std::endl;
     std::cout << "N, time_s\n";
     for (size_t N = 6; N <= 28; N++)
