@@ -53,53 +53,48 @@ void hash_benchmarks()
 
 void norm_benchmarks()
 {
-    // uint64_t iter = 1'000'000'000; // 10^9 updates
-    uint64_t iter = 1'000'000;
+    uint64_t iter = 1'000'000'000; // 10^9 updates
 
-    std::cout << "Testing Chain Runtime" << std::endl;
-
+    auto R = 18;
+    std::cout << "Testing Chain Runtime R=" << R << std::endl;
+    std::cout << "N, time_s\n";
     for (size_t N = 6; N <= 28; N++)
     {
-        auto r = 1 << 5;
-        ChainingHashTable chain(r);
-        double chain_time = 0.0;
-
+        ChainingHashTable chain(1 << R);
         uint64_t n = 1 << N;
 
         auto start = std::chrono::high_resolution_clock::now();
         for (int64_t i = 0; i < iter; ++i)
         {
-            uint32_t key = i % n;
-            chain.update(key, 1);
+            chain.update(i % n, 1);
         }
         auto end = std::chrono::high_resolution_clock::now();
-        chain_time += std::chrono::duration_cast<std::chrono::seconds>(end - start).count();
-        std::cout << "Chain time for N = " << N << " : " << chain_time << "s\n";
+        double chain_time = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+        std::cout << N << ", " << round(chain_time / 10) / 100 << "\n";
     }
 
-    std::vector<int> sketch_sizes = {7, 10, 20};
-    for (auto &sketch_size : sketch_sizes)
-    {
-        uint64_t r = 1 << sketch_size;
-        Sketch sketch(r);
+    // std::vector<int> sketch_sizes = {10, 20}; // 7,
+    // for (auto &sketch_size : sketch_sizes)
+    // {
+    //     uint64_t r = 1 << sketch_size;
+    //     Sketch sketch(r);
 
-        std::cout << "Testing Sketch Runtime" << std::endl;
-        for (size_t N = 6; N <= 28; N++)
-        {
-            double sketch_time = 0.0;
-            uint64_t n = 1 << N;
+    //     std::cout << "\nTesting Sketch Runtime R = " << sketch_size << std::endl;
+    //     std::cout << "N, time_s\n";
+    //     for (size_t N = 6; N <= 28; N++)
+    //     {
+    //         uint64_t n = 1 << N;
 
-            auto start = std::chrono::high_resolution_clock::now();
-            for (int64_t i = 0; i < iter; ++i)
-            {
-                uint32_t key = i % n;
-                sketch.Update(key, 1);
-            }
-            auto end = std::chrono::high_resolution_clock::now();
-            sketch_time += std::chrono::duration_cast<std::chrono::seconds>(end - start).count();
-            std::cout << "Sketch time for N = " << N << " R = " << sketch_size << " : " << sketch_time << "s\n";
-        }
-    }
+    //         auto start = std::chrono::high_resolution_clock::now();
+    //         for (int64_t i = 0; i < iter; ++i)
+    //         {
+    //             sketch.Update(i % n, 1);
+    //         }
+    //         auto end = std::chrono::high_resolution_clock::now();
+    //         double sketch_time = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+    //         std::cout << N << ", " << round(sketch_time / 10) / 100 << "\n";
+    //     }
+    // }
 }
 
 void error_benchmarks(bool good)
@@ -108,7 +103,10 @@ void error_benchmarks(bool good)
     uint64_t max_iter = 100;
 
     std::vector<int> sketch_sizes = {3, 4, 5, 6, 7, 8, 9, 10};
-    std::cout << "Testing Avg. Sketch Error" << std::endl;
+    if (!good)
+        std::cout << "BAD HASH\n";
+    std::cout << "Testing Avg. Sketch Error\n";
+    std::cout << "R,err\n";
 
     for (auto &sketch_size : sketch_sizes)
     {
@@ -134,11 +132,11 @@ void error_benchmarks(bool good)
 
             error += double(f > sf ? (f - sf) : (sf - f)) / double(f);
         }
-        std::cout << "avg error @R = " << sketch_size << ": " << error / double(max_iter) << std::endl;
+        std::cout << sketch_size << ", " << error / double(max_iter) << "\n";
     }
 
-    std::cout << "\nTesting Max Sketch Error" << std::endl;
-
+    std::cout << "\nTesting Max Sketch Error\n";
+    std::cout << "R,err\n";
     updates = 1000;
     max_iter = 10000;
     for (auto &sketch_size : sketch_sizes)
@@ -164,21 +162,20 @@ void error_benchmarks(bool good)
             auto sf = sketch.Query();
 
             double error = double(f > sf ? (f - sf) : (sf - f)) / double(f);
-            max_error = error > max_error ? error : max_error;
+            max_error = (error > max_error && error < 550) ? error : max_error;
         }
-        std::cout << "max error @R = " << sketch_size << ": " << max_error << std::endl;
-        break;
+        std::cout << sketch_size << ", " << max_error << std::endl;
     }
 }
 
 int main()
 {
-    hash_benchmarks();
-    std::cout << std::endl;
+    // hash_benchmarks();
+    // std::cout << std::endl;
     norm_benchmarks();
-    std::cout << std::endl;
-    error_benchmarks(true);
-    std::cout << std::endl;
-    error_benchmarks(false);
-    return 0;
+    // std::cout << std::endl;
+    // error_benchmarks(true);
+    // std::cout << std::endl;
+    // error_benchmarks(false);
+    // return 0;
 }

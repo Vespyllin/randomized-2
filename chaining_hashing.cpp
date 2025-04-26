@@ -14,7 +14,7 @@ ChainingHashTable::ChainingHashTable(size_t size)
 {
     std::random_device rd;
     std::mt19937 gen(rd());
-    std::uniform_int_distribution<uint32_t> dis(1, P - 1); // Random odd a
+    std::uniform_int_distribution<uint32_t> dis(1, P - 1);
 
     a = dis(gen);
     b = dis(gen);
@@ -29,7 +29,8 @@ uint32_t ChainingHashTable::multiply_shift_uint32(uint32_t x, uint32_t l, uint32
 
 void ChainingHashTable::update(uint32_t key, int64_t delta)
 {
-    size_t index = multiply_shift_uint32(key, 32, a | 1) % table_size;
+    // size_t index = multiply_shift_uint32(key, 32, a | 1) % table_size;
+    size_t index = multiply_shift_uint32(key, 18, a | 1);
 
     // Search if key already exists in the table
     for (auto &item : table[index])
