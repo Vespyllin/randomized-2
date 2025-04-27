@@ -11,12 +11,10 @@ public:
     void Update(uint32_t i, int64_t delta);
     void Bad_Update(uint32_t i, int64_t delta);
     uint64_t Query() const;
-    int h(uint32_t x) const;
-    int g(uint32_t x) const;
+    std::pair<uint64_t, uint64_t> hg(uint32_t x) const;
 
     int bad_k(uint32_t x) const;
-    int bad_h(uint32_t x) const;
-    int bad_g(uint32_t x) const;
+    std::pair<uint64_t, uint64_t> bad_hg(uint32_t x) const;
 
 private:
     int r;

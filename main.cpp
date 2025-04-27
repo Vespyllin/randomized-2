@@ -18,21 +18,11 @@ void hash_benchmarks()
     auto start = std::chrono::high_resolution_clock::now();
     for (uint32_t i = 0; i < iter; ++i)
     {
-        volatile int result = sketch.h(i);
+        volatile auto result = sketch.hg(i);
         (void)result;
     }
     auto end = std::chrono::high_resolution_clock::now();
-    double h_time = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
-
-    // Test g(i)
-    start = std::chrono::high_resolution_clock::now();
-    for (uint32_t i = 0; i < iter; ++i)
-    {
-        volatile int result = sketch.g(i);
-        (void)result;
-    }
-    end = std::chrono::high_resolution_clock::now();
-    double g_time = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+    double hg_time = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
 
     // Test m(i)
     start = std::chrono::high_resolution_clock::now();
@@ -46,8 +36,7 @@ void hash_benchmarks()
 
     // Print results
     std::cout << "Total time:\n";
-    std::cout << "h(i): " << h_time << "ms\n";
-    std::cout << "g(i): " << g_time << "ms\n";
+    std::cout << "h(i) + g(i): " << hg_time << "ms\n";
     std::cout << "m(i): " << m_time << "ms\n";
 }
 
@@ -55,46 +44,46 @@ void norm_benchmarks()
 {
     uint64_t iter = 1'000'000'000; // 10^9 updates
 
-    auto R = 22;
-    std::cout << "Testing Chain Runtime R=" << R << std::endl;
-    std::cout << "N, time_s\n";
-    for (size_t N = 6; N <= 28; N++)
-    {
-        ChainingHashTable chain(1 << R);
-        uint64_t n = 1 << N;
-
-        auto start = std::chrono::high_resolution_clock::now();
-        for (int64_t i = 0; i < iter; ++i)
-        {
-            chain.update(i % n, 1);
-        }
-        auto end = std::chrono::high_resolution_clock::now();
-        double chain_time = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
-        std::cout << N << ", " << round(chain_time / 10) / 100 << "\n";
-    }
-
-    // std::vector<int> sketch_sizes = {10, 20}; // 7,
-    // for (auto &sketch_size : sketch_sizes)
+    // auto R = 22;
+    // std::cout << "Testing Chain Runtime R=" << R << std::endl;
+    // std::cout << "N, time_s\n";
+    // for (size_t N = 6; N <= 28; N++)
     // {
-    //     uint64_t r = 1 << sketch_size;
-    //     Sketch sketch(r);
+    //     ChainingHashTable chain(1 << R);
+    //     uint64_t n = 1 << N;
 
-    //     std::cout << "\nTesting Sketch Runtime R = " << sketch_size << std::endl;
-    //     std::cout << "N, time_s\n";
-    //     for (size_t N = 6; N <= 28; N++)
+    //     auto start = std::chrono::high_resolution_clock::now();
+    //     for (int64_t i = 0; i < iter; ++i)
     //     {
-    //         uint64_t n = 1 << N;
-
-    //         auto start = std::chrono::high_resolution_clock::now();
-    //         for (int64_t i = 0; i < iter; ++i)
-    //         {
-    //             sketch.Update(i % n, 1);
-    //         }
-    //         auto end = std::chrono::high_resolution_clock::now();
-    //         double sketch_time = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
-    //         std::cout << N << ", " << round(sketch_time / 10) / 100 << "\n";
+    //         chain.update(i % n, 1);
     //     }
+    //     auto end = std::chrono::high_resolution_clock::now();
+    //     double chain_time = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+    //     std::cout << N << ", " << round(chain_time / 10) / 100 << "\n";
     // }
+
+    std::vector<int> sketch_sizes = {7, 10, 20};
+    for (auto &sketch_size : sketch_sizes)
+    {
+        uint64_t r = 1 << sketch_size;
+        Sketch sketch(r);
+
+        std::cout << "\nTesting Sketch Runtime R = " << sketch_size << std::endl;
+        std::cout << "N, time_s\n";
+        for (size_t N = 6; N <= 28; N++)
+        {
+            uint64_t n = 1 << N;
+
+            auto start = std::chrono::high_resolution_clock::now();
+            for (int64_t i = 0; i < iter; ++i)
+            {
+                sketch.Update(i % n, 1);
+            }
+            auto end = std::chrono::high_resolution_clock::now();
+            double sketch_time = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+            std::cout << N << ", " << round(sketch_time / 10) / 100 << "\n";
+        }
+    }
 }
 
 void error_benchmarks(bool good)
@@ -172,10 +161,10 @@ int main()
 {
     // hash_benchmarks();
     // std::cout << std::endl;
-    norm_benchmarks();
+    // norm_benchmarks();
     // std::cout << std::endl;
-    // error_benchmarks(true);
-    // std::cout << std::endl;
-    // error_benchmarks(false);
+    error_benchmarks(true);
+    std::cout << std::endl;
+    error_benchmarks(false);
     // return 0;
 }

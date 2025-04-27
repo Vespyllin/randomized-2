@@ -25,5 +25,5 @@ plt.title('R vs Avg. Error')
 plt.legend()
 plt.grid(True)
 
-plt.savefig('avg.jpg', format='jpeg', dpi=300, bbox_inches='tight')  # Avoid cropping labels
+plt.savefig('avg.jpg', format='jpeg', dpi=300, bbox_inches='tight')
 

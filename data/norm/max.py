@@ -23,5 +23,5 @@ plt.title('R vs Max. Error')
 plt.legend()
 plt.grid(True)
 
-plt.savefig('max.jpg', format='jpeg', dpi=300, bbox_inches='tight')  # Avoid cropping labels
+plt.savefig('max.jpg', format='jpeg', dpi=300, bbox_inches='tight')
 

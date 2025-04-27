@@ -35,5 +35,5 @@ plt.title('N vs Average Runtime per Update')
 plt.legend()
 plt.grid(True)
 
-plt.savefig('performance.jpg', format='jpeg', dpi=300, bbox_inches='tight')  # Avoid cropping labels
+plt.savefig('performance.jpg', format='jpeg', dpi=300, bbox_inches='tight')
 
